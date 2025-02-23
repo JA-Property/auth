@@ -6,7 +6,11 @@ class ForgotPasswordController {
      * Render the forgot password view.
      */
     public function renderForgotPasswordView() {
-        include __DIR__ . '/../Views/ForgotPasswordView.html';
+        // Define the path to the specific view file (the card content)
+        $viewFile = __DIR__ . '/../Views/ForgotPasswordView.html';
+        $title = 'Forgot Password - JA Property Management';
+        // Optionally, a toast message could have been set by processLogin
+        include __DIR__ . '/../Views/layout.php';
     }
 
     /**

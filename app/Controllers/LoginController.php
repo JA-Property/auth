@@ -3,23 +3,25 @@ namespace App\Controllers;
 
 class LoginController {
     /**
-     * Loads the login view.
+     * Renders the login view.
      */
     public function renderLoginView() {
-        include __DIR__ . '/../Views/LoginView.html';
+        // Define the path to the specific view file (the card content)
+        $viewFile = __DIR__ . '/../Views/LoginView.html';
+        $title = 'Login - JA Property Management';
+        // Optionally, a toast message could have been set by processLogin
+        include __DIR__ . '/../Views/layout.php';
     }
 
     /**
-     * Process login submission (this is where you would add your authentication logic).
-     * This method isn’t called directly in this simple example.
+     * Processes the login submission.
      */
     public function processLogin() {
-        // Example (replace with your actual authentication logic):
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $email = trim($_POST['email'] ?? '');
             $password = trim($_POST['password'] ?? '');
 
-            // Dummy authentication logic:
+            // Dummy authentication logic for demonstration:
             if ($email === 'staff@example.com' && $password === 'password') {
                 $_SESSION['user_role'] = 'staff';
                 header("Location: https://staff.yourdomain.com");
@@ -29,8 +31,14 @@ class LoginController {
                 header("Location: https://customer.yourdomain.com");
                 exit;
             } else {
+                // Set a toast message to be displayed in the layout
+                $toastMessage = "Invalid email or password.";
+                // Optionally, you can also set an error variable to show inline error in the view
                 $error = "Invalid email or password.";
-                include __DIR__ . '/../Views/LoginView.html';
+                // Define the view file and title, then load the global layout
+                $viewFile = __DIR__ . '/../Views/LoginView.html';
+                $title = 'Login - JA Property Management';
+                include __DIR__ . '/../Views/layout.php';
                 exit;
             }
         }
