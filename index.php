@@ -9,7 +9,6 @@ use Dotenv\Dotenv;
 $dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
-session_destroy();
 // Start the session
 session_start();
 
@@ -17,10 +16,10 @@ session_start();
 if (isset($_SESSION['user_role'])) {
     $role = $_SESSION['user_role'];
     if ($role === 'staff') {
-        header("Location: https://staff.yourdomain.com");
+        header("Location: google.com");
         exit;
     } elseif ($role === 'customer') {
-        header("Location: https://customer.yourdomain.com");
+        header("Location: bing.com");
         exit;
     }
 }

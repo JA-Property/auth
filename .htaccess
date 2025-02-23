@@ -1,20 +1,20 @@
 <IfModule mod_rewrite.c>
-  RewriteEngine On
-  
-  # Rewrite friendly URLs to index.php with a route parameter.
-  RewriteRule ^login/?$ index.php?route=login [L,QSA]
-  RewriteRule ^logout/?$ index.php?route=logout [L,QSA]
-  RewriteRule ^register/?$ index.php?route=register [L,QSA]
-  RewriteRule ^activate/?$ index.php?route=activate [L,QSA]
-  RewriteRule ^forgot-password/?$ index.php?route=forgot-password [L,QSA]
-  RewriteRule ^reset-password/?$ index.php?route=reset-password [L,QSA]
-  
-  
-  # If the requested file or directory exists, serve it directly.
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule . index.php [L,QSA]
+    RewriteEngine On
+
+    # If your site is in a subfolder, adjust the RewriteBase accordingly.
+    RewriteBase /
+
+    # Serve the request directly if the file or directory exists.
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Otherwise, capture the entire request and pass it as the "route" parameter.
+    RewriteRule ^(.*)$ index.php?route=$1 [QSA,L]
 </IfModule>
+
+# Optionally, set index.php as the default directory index.
+DirectoryIndex index.php
 
 # Prevent direct access to the .env file
 <Files ".env">
