@@ -12,17 +12,6 @@ $dotenv->load();
 // Start the session
 session_start();
 
-// If the user is already logged in, redirect to the appropriate subdomain.
-if (isset($_SESSION['user_role'])) {
-    $role = $_SESSION['user_role'];
-    if ($role === 'staff') {
-        header("Location: google.com");
-        exit;
-    } elseif ($role === 'customer') {
-        header("Location: bing.com");
-        exit;
-    }
-}
 
 // Simple routing using a query parameter (?route=)
 // This file handles auth-specific routes only.
@@ -38,6 +27,8 @@ switch ($route) {
         } else {
             $controller = new App\Controllers\LoginController();
             $controller->renderLoginView();
+echo password_hash('password', PASSWORD_DEFAULT);
+
         }
         break;
     
