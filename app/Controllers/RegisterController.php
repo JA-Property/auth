@@ -6,7 +6,11 @@ class RegisterController {
      * Render the registration view.
      */
     public function renderRegisterView() {
-        include __DIR__ . '/../Views/RegisterView.html';
+               // Define the path to the specific view file (the card content)
+               $viewFile = __DIR__ . '/../Views/RegisterView.html';
+               $title = 'Register - JA Property Management';
+               // Optionally, a toast message could have been set by processLogin
+               include __DIR__ . '/../Views/layout.php';
     }
 
     /**

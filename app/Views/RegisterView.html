@@ -1,0 +1,28 @@
+<div class="w-full mx-4 sm:max-w-md bg-gray-800 p-8 rounded-lg shadow-lg z-40">
+    <h2 class="text-2xl font-bold text-center mb-6">Register</h2>
+    <form method="POST" action="/register" class="space-y-4">
+      <div>
+        <label for="account_number" class="block text-gray-300">
+          Account Number 
+          <span class="ml-1 text-xs text-gray-400 cursor-help" title="Your account number is listed on your monthly statement or invoice.">(?)</span>
+        </label>
+        <input type="text" id="account_number" name="account_number" placeholder="Enter your account number" required
+               class="mt-1 w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
+      </div>
+      <div>
+        <label for="billing_zip" class="block text-gray-300">
+          Billing ZIP Code 
+          <span class="ml-1 text-xs text-gray-400 cursor-help" title="Enter the ZIP code associated with your billing address.">(?)</span>
+        </label>
+        <input type="text" id="billing_zip" name="billing_zip" placeholder="Enter your billing ZIP code" required
+               class="mt-1 w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
+      </div>
+      <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 rounded-full transition duration-300">
+        Next
+      </button>
+    </form>
+    <div class="mt-6 text-center">
+      <a href="/login" class="text-green-500 text-sm hover:underline">Back to Login</a>
+    </div>
+  </div>
+  
