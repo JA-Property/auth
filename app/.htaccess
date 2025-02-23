@@ -1,0 +1,26 @@
+# ------------------------------------------------------------------
+# .htaccess File: Directory Access Restriction
+#
+# Purpose:
+#   This file is used to prevent direct access to sensitive directories,
+#   such as /app and /vendor, by disabling PHP processing and denying
+#   all HTTP requests to these folders.
+#
+# How It Works:
+#   1. The <IfModule> block checks if mod_php7 is enabled. If it is,
+#      the "php_flag engine off" directive disables PHP execution,
+#      preventing any PHP files from being executed if accessed directly.
+#   2. "Deny from all" instructs Apache to block all HTTP access to the
+#      directory, ensuring that no files within it can be accessed by
+#      web browsers.
+#
+# Usage:
+#   Place this .htaccess file in directories where you want to restrict
+#   access (e.g., /app and /vendor). This adds an extra layer of security
+#   by protecting sensitive application code and dependencies.
+# ------------------------------------------------------------------
+
+<IfModule mod_php7.c>
+    php_flag engine off
+</IfModule>
+Deny from all

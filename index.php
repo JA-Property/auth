@@ -21,30 +21,32 @@
   </style>
 </head>
 <body class="bg-gray-900 text-white">
-    <!-- Toast Container -->
-  <div id="toast-container" class="fixed top-4 right-4 space-y-4 z-500"></div>
+  <!-- Toast Container (fixed top-right, mobile friendly, on top of header) -->
+  <div id="toast-container" class="fixed top-4 right-4 space-y-4 z-[100]"></div>
 
-<script>
-  // Function to create a toast message
-  function createToast(message, duration = 5000) {
-    const toast = document.createElement('div');
-    toast.className = 'bg-red-600 text-white px-4 py-2 rounded shadow-lg flex items-center';
-    toast.innerHTML = `
-      <span class="flex-1">${message}</span>
-      <button class="ml-4 text-white hover:text-gray-200" onclick="this.parentElement.remove();">
-        <i class="fas fa-times"></i>
-      </button>
-    `;
-    document.getElementById('toast-container').appendChild(toast);
-    // Auto remove toast after the specified duration
-    setTimeout(() => {
-      toast.remove();
-    }, duration);
-  }
+  <script>
+    // Function to create a toast message with a fixed width (mobile-friendly)
+    function createToast(message, duration = 5000) {
+      const toast = document.createElement('div');
+      // The classes below set a fixed width (max-w-xs), ensure full width on small screens, and style the toast.
+      toast.className = 'bg-red-600 text-white px-4 py-2 rounded shadow-lg flex items-center w-full max-w-xs';
+      toast.innerHTML = `
+        <span class="flex-1">${message}</span>
+        <button class="ml-4 text-white hover:text-gray-200" onclick="this.parentElement.remove();">
+          <i class="fas fa-times"></i>
+        </button>
+      `;
+      document.getElementById('toast-container').appendChild(toast);
+      // Auto remove toast after the specified duration
+      setTimeout(() => {
+        toast.remove();
+      }, duration);
+    }
 
-  // Immediately create a toast with your message
-  createToast("Unable to process your request at this time. Please contact support if the issue persists.");
-</script>
+    // Immediately create a toast with your message
+    createToast("Unable to process your request at this time. Please contact support if the issue persists.");
+  </script>
+
   <!-- Fixed Header -->
   <header class="fixed top-0 left-0 right-0 bg-black bg-opacity-75 shadow backdrop-blur-sm z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
@@ -56,7 +58,7 @@
   </header>
 
   <!-- Centered Login Card -->
-  <div class="fixed inset-0 flex items-center justify-center ">
+  <div class="fixed inset-0 flex items-center justify-center">
     <div class="w-full mx-4 sm:max-w-md bg-gray-800 p-8 sm:rounded-lg shadow-lg z-40">
       <h2 class="text-2xl font-bold text-center mb-6">Login</h2>
       <form class="space-y-4">
