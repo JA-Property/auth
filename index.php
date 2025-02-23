@@ -27,7 +27,6 @@ switch ($route) {
         } else {
             $controller = new App\Controllers\LoginController();
             $controller->renderLoginView();
-echo password_hash('password', PASSWORD_DEFAULT);
 
         }
         break;

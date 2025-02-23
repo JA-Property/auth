@@ -31,7 +31,7 @@ class LoginController {
 
             // Get the user record based on the email.
             $user = $this->userModel->findByEmail($email);
-            $now = date('Y-m-d H:i:s');
+                        $now = date('Y-m-d H:i:s');
 
             if ($user && password_verify($password, $user['password_hash'])) {
                 // Successful login:

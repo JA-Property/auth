@@ -15,9 +15,9 @@ class Database {
     public static function connect() {
         if (!self::$pdo) {
             $host    = getenv('DB_HOST') ?: 'localhost';
-            $dbname  = getenv('DB_NAME') ?: 'auth';
-            $user    = getenv('DB_USER') ?: 'root';
-            $pass    = getenv('DB_PASS') ?: '';
+            $dbname  = getenv('DB_NAME') ?: 'japrdjyn_auth';
+            $user    = getenv('DB_USER') ?: 'japrdjyn_auth';
+            $pass    = getenv('DB_PASS') ?: 'feeSVwR{hqr+';
             $charset = getenv('DB_CHARSET') ?: 'utf8mb4';
 
             $dsn = "mysql:host={$host};dbname={$dbname};charset={$charset}";
