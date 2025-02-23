@@ -9,6 +9,7 @@ use Dotenv\Dotenv;
 $dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
+session_destroy();
 // Start the session
 session_start();
 

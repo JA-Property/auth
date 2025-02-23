@@ -66,7 +66,7 @@
   </header>
 
   <!-- Main Content Area (only the card is included here) -->
-  <div class="flex items-center justify-center min-h-screen pt-16">
+  <div class="flex items-center justify-center min-h-screen">
     <?php include $viewFile; ?>
   </div>
 

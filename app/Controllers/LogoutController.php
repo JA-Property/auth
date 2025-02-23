@@ -8,7 +8,7 @@ class LogoutController {
     public function processLogout() {
         session_start();
         session_destroy();
-        header("Location: index.php?route=login");
+        header("Location: index.php");
         exit;
     }
 }

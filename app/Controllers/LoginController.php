@@ -24,11 +24,11 @@ class LoginController {
             // Dummy authentication logic for demonstration:
             if ($email === 'staff@example.com' && $password === 'password') {
                 $_SESSION['user_role'] = 'staff';
-                header("Location: https://staff.yourdomain.com");
+                header("Location: google.com");
                 exit;
             } elseif ($email === 'customer@example.com' && $password === 'password') {
                 $_SESSION['user_role'] = 'customer';
-                header("Location: https://customer.yourdomain.com");
+                header("Location: bing.com");
                 exit;
             } else {
                 // Set a toast message to be displayed in the layout
