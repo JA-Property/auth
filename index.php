@@ -22,7 +22,7 @@
 </head>
 <body class="bg-gray-900 text-white">
     <!-- Toast Container -->
-  <div id="toast-container" class="fixed top-4 right-4 space-y-4 z-50"></div>
+  <div id="toast-container" class="fixed top-4 right-4 space-y-4 z-500"></div>
 
 <script>
   // Function to create a toast message
