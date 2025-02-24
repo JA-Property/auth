@@ -37,7 +37,7 @@ class LogoutController {
     header("Expires: 0"); // Proxies.
 
     // Redirect to login
-    header("Location: index.php?route=login");
+    header("Location: /");
     exit;
 }
 }
