@@ -13,7 +13,7 @@ $cookieParams = session_get_cookie_params();
 session_set_cookie_params([
     'lifetime' => $cookieParams['lifetime'],
     'path'     => '/',
-    'domain'   => '.example.com', // leading dot
+    'domain'   => '.japropertysc.com', // leading dot
     'secure'   => $cookieParams['secure'],
     'httponly' => $cookieParams['httponly'],
     'samesite' => 'None'
