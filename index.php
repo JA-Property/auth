@@ -8,9 +8,20 @@ require_once __DIR__ . '/vendor/autoload.php';
 use Dotenv\Dotenv;
 $dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->load();
+// Must happen before session_start()
+$cookieParams = session_get_cookie_params();
+session_set_cookie_params([
+    'lifetime' => $cookieParams['lifetime'],
+    'path'     => '/',
+    'domain'   => '.example.com', // leading dot
+    'secure'   => $cookieParams['secure'],
+    'httponly' => $cookieParams['httponly'],
+    'samesite' => 'None'
+]);
 
-// Start the session
+session_name('MYSESSIONID');
 session_start();
+
 
 
 // Simple routing using a query parameter (?route=)
