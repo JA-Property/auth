@@ -37,37 +37,29 @@ class LoginController
 
             if ($user && password_verify($password, $user['password_hash'])) {
                 // Successful login:
-                // Update both the last login attempt and last successful login.
+                // 1) Update both the last login attempt and last successful login
                 $this->userModel->updateLoginTimestamps($user['id'], $now, $now);
 
-                // If you have 'firstname'/'lastname' columns in your DB:
-                // $fullName = $user['firstname'] . ' ' . $user['lastname'];
-                // $initials = strtoupper($user['firstname'][0] . $user['lastname'][0]);
-                // Otherwise, just hard-code or store from DB as you wish.
+                // 2) Store all user columns (minus password_hash) in the session
+                //    This way, the staff portal can see every DB column (like role, status, etc.).
+                $_SESSION['user'] = $user;
+                unset($_SESSION['user']['password_hash']); // Keep the session safer
 
-                $_SESSION['user'] = [
-                    'role'         => $user['role'],
-                    'id'           => $user['id'],
-                    // Example placeholders:
-                    'display_name' => 'Jane Doe',   // or from DB: $fullName
-                    'initials'     => 'JD',        // or from DB: $initials
-                ];
-
-                // Redirect based on role.
+                // 3) Redirect based on role
                 if ($user['role'] === 'staff' || $user['role'] === 'admin') {
-                    // Example: go to staff.japropertysc.com
                     header("Location: https://backoffice.japropertysc.com");
                 } else {
-                    // Example: go to customer.japropertysc.com
                     header("Location: https://customer.japropertysc.com");
                 }
                 exit;
+
             } else {
-                // If the user exists, record the login attempt for throttling/log purposes.
+                // If the user exists, record the login attempt timestamp (failed).
                 if ($user) {
                     $this->userModel->updateLoginTimestamps($user['id'], $now);
                 }
-                // Prepare error messaging for failed login.
+
+                // Prepare error messaging for a failed login
                 $toastMessage = "Invalid email or password.";
                 $error = "Invalid email or password.";
                 $viewFile = __DIR__ . '/../Views/LoginView.html';
