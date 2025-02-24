@@ -14,7 +14,11 @@ class ResetPasswordController {
         $token = $_GET['token'] ?? '';
 
         if (empty($token)) {
-            echo "No token provided.";
+            // Instead of echoing, let's show a toast message & re-render (or you can do direct echo if you prefer).
+            $toastMessage = "No token provided.";
+            $viewFile = __DIR__ . '/../Views/ResetPasswordView.html';
+            $title = 'Reset Password - JA Property Management';
+            include __DIR__ . '/../Views/layout.php';
             exit;
         }
 
@@ -25,21 +29,16 @@ class ResetPasswordController {
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if (!$row) {
-            echo "Invalid or expired token.";
+            $toastMessage = "Invalid or expired token.";
+            $viewFile = __DIR__ . '/../Views/ResetPasswordView.html';
+            $title = 'Reset Password - JA Property Management';
+            include __DIR__ . '/../Views/layout.php';
             exit;
         }
 
-        // 3) Optional: check if token is older than 1 hour
-        //    For example:
-        //    $createdTime = strtotime($row['created_at']);
-        //    $oneHourAgo  = time() - 3600;
-        //    if ($createdTime < $oneHourAgo) {
-        //        echo "This reset link has expired. Please request a new one.";
-        //        exit;
-        //    }
+        // (Optional) check if token is older than 1 hour, etc.
 
-        // 4) If token is valid, show the form
-        //    The form MUST include a hidden input with the token
+        // If token is valid, show the form
         $viewFile = __DIR__ . '/../Views/ResetPasswordView.html';
         $title = 'Reset Password - JA Property Management';
         include __DIR__ . '/../Views/layout.php';
@@ -50,14 +49,13 @@ class ResetPasswordController {
      */
     public function processResetPassword() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $token = trim($_POST['token'] ?? '');
-            $password = trim($_POST['password'] ?? '');
+            $token           = trim($_POST['token'] ?? '');
+            $password        = trim($_POST['password'] ?? '');
             $confirmPassword = trim($_POST['confirm_password'] ?? '');
 
             // 1) Basic checks
             if (empty($token) || empty($password) || empty($confirmPassword)) {
-                $error = "All fields are required.";
-                // Re-display the form with $error if needed:
+                $toastMessage = "All fields are required.";
                 $viewFile = __DIR__ . '/../Views/ResetPasswordView.html';
                 $title = 'Reset Password - JA Property Management';
                 include __DIR__ . '/../Views/layout.php';
@@ -65,7 +63,7 @@ class ResetPasswordController {
             }
 
             if ($password !== $confirmPassword) {
-                $error = "Passwords do not match.";
+                $toastMessage = "Passwords do not match.";
                 $viewFile = __DIR__ . '/../Views/ResetPasswordView.html';
                 $title = 'Reset Password - JA Property Management';
                 include __DIR__ . '/../Views/layout.php';
@@ -79,11 +77,12 @@ class ResetPasswordController {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if (!$row) {
-                echo "Invalid or expired token.";
+                $toastMessage = "Invalid or expired token.";
+                $viewFile = __DIR__ . '/../Views/ResetPasswordView.html';
+                $title = 'Reset Password - JA Property Management';
+                include __DIR__ . '/../Views/layout.php';
                 exit;
             }
-
-            // (Optional) check expiration again here if you want to be thorough
 
             $email = $row['email'];
 
@@ -91,7 +90,7 @@ class ResetPasswordController {
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
             $stmtUser = $pdo->prepare("UPDATE users SET password_hash = :hash WHERE email = :email");
             $stmtUser->execute([
-                'hash' => $hashedPassword,
+                'hash'  => $hashedPassword,
                 'email' => $email
             ]);
 
@@ -99,8 +98,11 @@ class ResetPasswordController {
             $stmtDel = $pdo->prepare("DELETE FROM password_resets WHERE token = :token");
             $stmtDel->execute(['token' => $token]);
 
-            // 5) Inform the user
-            echo "Your password has been reset. You can now <a href='index.php?route=login'>login</a>.";
+            // 5) Inform the user with a toast
+            $toastMessage = "Your password has been reset. <a href='index.php?route=login' class='underline'>Login now</a>.";
+            $viewFile = __DIR__ . '/../Views/ResetPasswordView.html';
+            $title = 'Reset Password - JA Property Management';
+            include __DIR__ . '/../Views/layout.php';
             exit;
         }
     }
