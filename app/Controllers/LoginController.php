@@ -56,7 +56,7 @@ class LoginController
                 // Redirect based on role.
                 if ($user['role'] === 'staff' || $user['role'] === 'admin') {
                     // Example: go to staff.japropertysc.com
-                    header("Location: https://staff.japropertysc.com");
+                    header("Location: https://backoffice.japropertysc.com");
                 } else {
                     // Example: go to customer.japropertysc.com
                     header("Location: https://customer.japropertysc.com");
