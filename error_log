@@ -1,6 +1,4 @@
-[24-Feb-2025 01:36:13 UTC] PHP Fatal error:  Uncaught Error: Class "PHPMailer\PHPMailer\PHPMailer" not found in /home/japrdjyn/auth/app/Controllers/ForgotPasswordController.php:88
-Stack trace:
-#0 /home/japrdjyn/auth/app/Controllers/ForgotPasswordController.php(64): App\Controllers\ForgotPasswordController->sendResetEmail()
-#1 /home/japrdjyn/auth/index.php(76): App\Controllers\ForgotPasswordController->processForgotPassword()
-#2 {main}
-  thrown in /home/japrdjyn/auth/app/Controllers/ForgotPasswordController.php on line 88
+[24-Feb-2025 02:16:05 UTC] PHPMailer Error: SMTP Error: Could not connect to SMTP host.
+[24-Feb-2025 02:16:19 UTC] PHPMailer Error: SMTP Error: Could not connect to SMTP host.
+[24-Feb-2025 02:19:25 UTC] PHPMailer Error: SMTP Error: Could not connect to SMTP host.
+[24-Feb-2025 02:21:35 UTC] PHPMailer Error: SMTP Error: Could not connect to SMTP host.

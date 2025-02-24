@@ -20,6 +20,46 @@ class User {
         $stmt->execute(['email' => $email]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+// app/Models/User.php
+public function createFull($data) {
+    $sql = "INSERT INTO users (
+                initials,
+                display_name,
+                email,
+                password_hash,
+                role,
+                onboarded,
+                verified,
+                created_at,
+                updated_at
+            ) VALUES (
+                :initials,
+                :display_name,
+                :email,
+                :password_hash,
+                :role,
+                :onboarded,
+                :verified,
+                NOW(),
+                NOW()
+            )";
+
+    $stmt = $this->pdo->prepare($sql);
+    $success = $stmt->execute([
+        'initials'      => $data['initials'] ?? '',
+        'display_name'  => $data['display_name'] ?? '',
+        'email'         => $data['email'],
+        'password_hash' => $data['password_hash'],
+        'role'          => $data['role'] ?? 'customer',
+        'onboarded'     => $data['onboarded'] ?? 0,
+        'verified'      => $data['verified'] ?? 0,
+    ]);
+
+    if ($success) {
+        return $this->pdo->lastInsertId(); // Return the new user's ID
+    }
+    return false;
+}
 
     // Create a new user record
     public function create($data) {

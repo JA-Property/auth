@@ -1,25 +1,26 @@
 <div class="w-full mx-4 sm:max-w-md bg-gray-800 p-8 rounded-lg shadow-lg z-40">
   <!-- Heading -->
   <div class="text-center mb-6">
-    <h2 class="text-3xl font-bold">Login</h2>
+    <h2 class="text-3xl font-bold">Create Your Online Account</h2>
     <p class="text-sm text-gray-400 mt-1">
       <i class="fas fa-info-circle mr-1"></i>
-      Enter your credentials to access your account
+      Step 2 of 2: Enter your email and create a password
     </p>
   </div>
 
   <!-- Form -->
-  <form method="POST" action="/" class="space-y-6">
+  <form method="POST" action="index.php?route=register-create" class="space-y-6">
+
     <!-- Email -->
     <div>
       <label for="email" class="block text-gray-300 mb-1">
         <i class="fas fa-envelope text-green-400 mr-1"></i>
         Email Address
       </label>
-      <input
-        type="email"
-        id="email"
-        name="email"
+      <input 
+        type="email" 
+        id="email" 
+        name="email" 
         placeholder="you@example.com"
         required
         class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md 
@@ -27,7 +28,7 @@
                placeholder-gray-400"
       >
       <p class="text-xs text-gray-500 mt-1">
-        We won't share your email. Make sure it's valid.
+        We'll use this email to send you important updates and password resets.
       </p>
     </div>
 
@@ -37,10 +38,10 @@
         <i class="fas fa-lock text-green-400 mr-1"></i>
         Password
       </label>
-      <input
-        type="password"
-        id="password"
-        name="password"
+      <input 
+        type="password" 
+        id="password" 
+        name="password" 
         placeholder="********"
         required
         class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md 
@@ -48,40 +49,44 @@
                placeholder-gray-400"
       >
       <p class="text-xs text-gray-500 mt-1">
-        Please use a strong password to keep your account secure.
+        Choose at least 8 characters. Use letters, numbers, or symbols for a stronger password.
       </p>
     </div>
 
-    <!-- Remember & Forgot -->
-    <div class="flex items-center justify-between">
-      <label class="flex items-center text-sm text-gray-300">
-        <input 
-          type="checkbox" 
-          id="remember" 
-          name="remember" 
-          class="mr-2 text-green-500 focus:ring-green-500"
-        >
-        Remember Me
+    <!-- Confirm Password -->
+    <div>
+      <label for="confirm_password" class="block text-gray-300 mb-1">
+        <i class="fas fa-lock text-green-400 mr-1"></i>
+        Confirm Password
       </label>
-      <a href="/forgot-password" class="text-green-400 text-sm hover:underline">
-        <i class="fas fa-question-circle mr-1"></i> Forgot Password?
-      </a>
+      <input 
+        type="password" 
+        id="confirm_password" 
+        name="confirm_password" 
+        placeholder="********"
+        required
+        class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md 
+               focus:outline-none focus:ring-2 focus:ring-green-500 
+               placeholder-gray-400"
+      >
+      <p class="text-xs text-gray-500 mt-1">
+        Please re-enter your password to confirm.
+      </p>
     </div>
 
     <!-- Submit Button -->
-    <button
+    <button 
       type="submit"
       class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 rounded-full transition duration-300"
     >
-      <i class="fas fa-sign-in-alt mr-2"></i> Login
+      <i class="fas fa-user-check mr-2"></i> Create Account
     </button>
   </form>
 
   <!-- Bottom Link -->
-  <div class="text-center mt-6">
-    <span class="text-gray-400 text-sm">Don't have an account?</span>
-    <a href="/register" class="text-green-400 text-sm hover:underline ml-1">
-      <i class="fas fa-user-plus mr-1"></i> Register
+  <div class="mt-6 text-center">
+    <a href="index.php?route=register" class="text-green-400 text-sm hover:underline">
+      <i class="fas fa-arrow-left mr-1"></i> Back to Step 1
     </a>
   </div>
 </div>

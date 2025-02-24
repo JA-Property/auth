@@ -6,8 +6,14 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 // Load environment variables from the .env file
 use Dotenv\Dotenv;
-$dotenv = Dotenv::createImmutable(__DIR__);
-$dotenv->load();
+try {
+    $dotenv = Dotenv::createImmutable(__DIR__);
+    $dotenv->load();
+} catch (Exception $e) {
+    die("Dotenv load error: " . $e->getMessage());
+}
+
+
 // Must happen before session_start()
 $cookieParams = session_get_cookie_params();
 session_set_cookie_params([
@@ -49,18 +55,27 @@ switch ($route) {
         $controller->processLogout();
         break;
     
-    // Registration Routes
+    // STEP 1: Check the account
     case 'register':
-        // GET /register: Render registration view; POST /register: Process registration
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $controller = new App\Controllers\RegisterController();
-            $controller->processRegistration();
+            $controller->processAccountCheck();
         } else {
             $controller = new App\Controllers\RegisterController();
-            $controller->renderRegisterView();
+            $controller->renderAccountCheckView();
         }
         break;
-    
+
+    // STEP 2: Create user
+    case 'register-create':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $controller = new App\Controllers\RegisterController();
+            $controller->processUserCreation();
+        } else {
+            $controller = new App\Controllers\RegisterController();
+            $controller->renderUserCreationView();
+        }
+        break;
     // Account Activation Route
     case 'activate':
         // GET /activate?token=XYZ: Process account activation via token
