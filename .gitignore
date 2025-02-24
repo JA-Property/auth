@@ -2,7 +2,6 @@
 .env
 
 # Composer dependencies (if you’re using Composer)
-vendor/
 
 # OS generated files
 .DS_Store
