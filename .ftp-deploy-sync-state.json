@@ -1,0 +1,131 @@
+{
+    "description": "DO NOT DELETE THIS FILE. This file is used to keep track of which files have been synced in the most recent deployment. If you delete this file a resync will need to be done (which can take a while) - read more: https://github.com/SamKirkland/FTP-Deploy-Action",
+    "version": "1.0.0",
+    "generatedTime": 1740350907045,
+    "data": [
+        {
+            "type": "file",
+            "name": ".htaccess",
+            "size": 633,
+            "hash": "2cfea88be87495f1841fb29276d06820b2816842e026eae9b02b781117bd235e"
+        },
+        {
+            "type": "file",
+            "name": "README.md",
+            "size": 6,
+            "hash": "ecc5cf58863f417acd8afe337a15769bc4a1bb1d9008062fc0c8ed4b929428d0"
+        },
+        {
+            "type": "folder",
+            "name": "app"
+        },
+        {
+            "type": "file",
+            "name": "composer.json",
+            "size": 143,
+            "hash": "e1cef3b0aeeaa9b2ee873f09568c0ad7685b8c9c19ab274c4066e95235fae4f0"
+        },
+        {
+            "type": "file",
+            "name": "composer.lock",
+            "size": 16760,
+            "hash": "9149929854e258855a46671f6aad98cea27a38f4aa90045a8e0a7aa3dd867d24"
+        },
+        {
+            "type": "file",
+            "name": "index.php",
+            "size": 2959,
+            "hash": "6899c3f890c784884df8ebddb8bc2a0eeb0842f2d1b20bf9f00cdb1170a4f5af"
+        },
+        {
+            "type": "file",
+            "name": "schema.sql",
+            "size": 542,
+            "hash": "de7648882956cb29b4102ad4ee57c9b0ed70d385a6d4cc35e5e9a5a77eb6e706"
+        },
+        {
+            "type": "folder",
+            "name": "app/Controllers"
+        },
+        {
+            "type": "file",
+            "name": "app/Database.php",
+            "size": 976,
+            "hash": "11fa6e9e552a0783b3be32adc5ce7512899bbc86f942f09d7ce46649e0f21d3b"
+        },
+        {
+            "type": "folder",
+            "name": "app/Models"
+        },
+        {
+            "type": "folder",
+            "name": "app/Views"
+        },
+        {
+            "type": "file",
+            "name": "app/Controllers/ActivateController.php",
+            "size": 619,
+            "hash": "6bc7384360ee537fb1ee9295bd4c42abd33a09dec1cad0b177fa5c3a71646ae6"
+        },
+        {
+            "type": "file",
+            "name": "app/Controllers/ForgotPasswordController.php",
+            "size": 1181,
+            "hash": "e2c9e4bc965082a277928df80c9c1903217a44ab05eca39ea17be16b8d5f9fa1"
+        },
+        {
+            "type": "file",
+            "name": "app/Controllers/LoginController.php",
+            "size": 2267,
+            "hash": "d1094c81aed1992ad05f84421ef0e6f5ab4620776faaa88c185767f2740a8b77"
+        },
+        {
+            "type": "file",
+            "name": "app/Controllers/LogoutController.php",
+            "size": 1166,
+            "hash": "5d03c841caa2fc712399b427880681eb98a30650ba11f55aee750c9a62d96d85"
+        },
+        {
+            "type": "file",
+            "name": "app/Controllers/RegisterController.php",
+            "size": 1578,
+            "hash": "26df69f59da2b9c04a126807834fcd764d553a7c6aed131eb2baa0bbbe65488b"
+        },
+        {
+            "type": "file",
+            "name": "app/Controllers/ResetPasswordController.php",
+            "size": 1316,
+            "hash": "55519e28263e25d22942a06af474c39831395c5b142cd607103f121b314288ad"
+        },
+        {
+            "type": "file",
+            "name": "app/Models/User.php",
+            "size": 2258,
+            "hash": "d3b3410419b8ec39be39c7c7330864a0bf3e3f0868a03078a84fb11c86b3324f"
+        },
+        {
+            "type": "file",
+            "name": "app/Views/ForgotPasswordView.html",
+            "size": 940,
+            "hash": "10adeba547675021c86d458b06d7e3dbe5e1d88a9105e6bf54e97c8ad6e3069a"
+        },
+        {
+            "type": "file",
+            "name": "app/Views/LoginView.html",
+            "size": 1659,
+            "hash": "d832f2ade7782387aad14e6e7ac37692e1da36d94ced6f75f1a57ddc9c69bb1e"
+        },
+        {
+            "type": "file",
+            "name": "app/Views/layout.php",
+            "size": 2863,
+            "hash": "5552d1b5cc150c358702ce2d334f890f1c99068076cd023d05f637f70c9ca68b"
+        },
+        {
+            "type": "file",
+            "name": "app/Views/RegisterView.html",
+            "size": 1613,
+            "hash": "b5c5151298f017e2e309ec7862d71f5da92e3bbcce799fa75fa463f22cb689e6"
+        }
+    ]
+}
